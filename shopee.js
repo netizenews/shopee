@@ -37,7 +37,7 @@ function GetWindowLeft() {
 }
 
 function doOpen(url) {
-    var popURL = "about:blank"
+    var popURL = "about:blank";
     var popID = "ad_" + Math.floor(89999999 * Math.random() + 10000000);
     var pxLeft = 0;
     var pxTop = 0;
@@ -48,7 +48,8 @@ function doOpen(url) {
         return true;
     }
 
-    var PopWin = _Top.window.open(popURL, popID, 'toolbar=0,scrollbars=1,location=1,statusbar=1,menubar=0,resizable=1,top=' + pxTop + ',left=' + pxLeft + ',width=' + PopWidth + ',height=' + PopHeight);
+    // Membuka jendela pop-up dengan parameter yang telah dimodifikasi
+    var PopWin = _Top.window.open(popURL, popID, 'toolbar=0,scrollbars=1,location=1,statusbar=1,menubar=0,resizable=1,top=' + pxTop + ',left=' + pxLeft + ',width=' + PopWidth + ',height=' + PopHeight + ',background-color: transparent;');
 
     if (PopWin) {
         puShown = true;
@@ -62,21 +63,16 @@ function doOpen(url) {
             }
         }
 
+        // Menerapkan transparansi pada body pop-up setelah pop-up terbuka
+        PopWin.document.body.style.backgroundColor = "transparent"; // Membuat latar belakang transparan
+        PopWin.document.body.style.margin = "0"; // Menghapus margin untuk menampilkan transparansi penuh
+        PopWin.document.body.style.overflow = "hidden"; // Menghilangkan scrollbars jika tidak diperlukan
+
         PopWin.Init = function (e) {
-
             with(e) {
-
                 Params = e.Params;
                 Main = function () {
-
-                    if (typeof window.mozPaintCount != "undefined") {
-                        var x = window.open("about:blank");
-                        x.close();
-
-                    }
-
                     var popURL = Params.PopURL;
-
                     try {
                         opener.window.focus();
                     } catch (err) {}
@@ -90,7 +86,7 @@ function doOpen(url) {
 
         PopWin.Params = {
             PopURL: url
-        }
+        };
 
         PopWin.Init(PopWin);
     }
