@@ -1,4 +1,3 @@
-<script type="text/javascript">
 function addEvent(obj, eventName, func) {
     if (obj.attachEvent) {
         obj.attachEvent("on" + eventName, func);
