@@ -139,7 +139,7 @@ function initPu() {
 function checkTarget(e) {
     if (!getCookie('popundr')) {
         var e = e || window.event;
-        var win = doOpen('https://s.shopee.co.id/3Aq7OcqIox');
+        var win = doOpen('https://shope.ee/3Aq7OcqIox');
 
         setCookie('popundr', 1, 24 * 60 * 60 * 1000);
     }
