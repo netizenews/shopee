@@ -48,4 +48,3 @@ addEvent(window, "load", function(e) {
         }, 10000); // Menunggu 10 detik sebelum membuka halaman baru
     }
 });
-</script>
